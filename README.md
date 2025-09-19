@@ -39,14 +39,6 @@
   [main.test]
   name="hackx2"
   cutie="milo"
-
-  [General]
-  version=1.0
-  theme="dark"
-
-  [User:General]
-  username="Milo"
-  role="Admin"
   ```
 
   
@@ -70,17 +62,6 @@ final main:Ini = ini.elementsNamed("main.test").next();
 // Get and print data.
 Sys.println(main.get('name')); // Returns "hackx2"
 Sys.println(main.get('cutie')); // Returns "milo"
-
-// ------ INHERITED ELEMENTS
-
-// Get the element.
-final user:Ini = ini.elementsNamed("User").next();
-
-// Get and print data.
-Sys.println(user.get("username")); // Returns "Milo"
-Sys.println(user.get("theme")); // Returns "dark"
-Sys.println(user.get("role")); // Returns "Admin"
-Sys.println(Std.parseFloat(user.get("version"))); // Returns 1
 
 // -----------------------------
 ```
