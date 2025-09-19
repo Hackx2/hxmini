@@ -4,7 +4,7 @@
   "license": "MIT",
   "tags": ["matter","ini", "parser", "haxe", "configuration"],
   "description": "mini (matter.ini) is a powerful configuration file(.ini, .cfg) parser for haxe",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "releasenote": "",
   "contributors": ["hackx2"],
   "dependencies": { }
