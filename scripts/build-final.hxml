@@ -1,0 +1,4 @@
+scripts/build-cpp.hxml
+--next
+--cwd ..
+scripts/build-hl.hxml

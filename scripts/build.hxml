@@ -1,0 +1,5 @@
+--cwd ./scripts
+--dce no
+-lib mini
+-cp src
+-main Main
