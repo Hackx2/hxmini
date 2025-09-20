@@ -1,6 +1,7 @@
 release.zip
 export
 
+/release
 /.vscode
 /.haxelib
 /.DS_Store

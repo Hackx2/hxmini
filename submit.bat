@@ -1,7 +1,7 @@
 @echo off
 
 set PATH=C:\Program Files\7zip;%PATH%
-rmdir /s /q release.zip
+del /q release.zip
 rmdir /s /q release
 mkdir release
 copy LICENSE release\
@@ -10,7 +10,10 @@ copy README.md release\
 copy extraParams.hxml release\
 mkdir release\mini
 xcopy mini\*.hx release\mini\ /Y
-7za a -tzip release.zip release
-rmdir /s /q release
+pushd release
+7za a -tzip ..\release.zip *
+popd
 haxelib submit release.zip
+del /q release.zip
+rmdir /s /q release
 pause
