@@ -39,12 +39,12 @@ enum abstract EntryType(Int) {
 	 * @param str Option
 	 * @return EntryType
 	 */
-	public function fromString(str:String):EntryType {
-		return switch str {
-			case "Document": Document;
-			case "Section": Section;
-			case "Comment": Comment;
-			case "KeyValue": KeyValue;
+	@:from public static function fromString(str:String):EntryType {
+		return switch str.toLowerCase() {
+			case "document": Document;
+			case "section": Section;
+			case "comment": Comment;
+			case "keyvalue": KeyValue;
 			default: throw 'Unknown Type: $str';
 		};
 	}
