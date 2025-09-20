@@ -14,6 +14,6 @@ pushd release
 7za a -tzip ..\release.zip *
 popd
 haxelib submit release.zip
-del /q release.zip
+@REM del /q release.zip
 rmdir /s /q release
 pause
