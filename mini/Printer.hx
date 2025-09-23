@@ -18,7 +18,7 @@ class Printer {
 						switch (kv.nodeType) {
 							case KeyValue:
 								__strBuf.add(kv.nodeName + "=");
-								__strBuf.add(Utils.fixMultiline(kv.nodeValue));
+								__strBuf.add(Utils.wrapMultiline(kv.nodeValue));
 								__strBuf.add("\n");
 							case Comment:
 								__strBuf.add("; " + kv.nodeValue + "\n");
@@ -31,7 +31,7 @@ class Printer {
 					__strBuf.add("; " + c.nodeValue + "\n");
 				case KeyValue:
 					__strBuf.add(c.nodeName + "=");
-					__strBuf.add(Utils.fixMultiline(c.nodeValue));
+					__strBuf.add(Utils.wrapMultiline(c.nodeValue));
 					__strBuf.add("\n");
 				default:
 					#if MINI_PUSH_ARTIFACTS __strBuf.add("; [ARTIFACT]: " + c.nodeName + " | " + c.nodeValue + " | " + c.nodeType + "\n"); #end

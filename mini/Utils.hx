@@ -18,13 +18,13 @@ final class Utils {
 		return s.substring(0, i + 1);
 	}
 
-	public inline static function fixMultiline(b:String):String {
-		if (b == null) {
-			return "";
-		}
-		if (b.indexOf("\n") != -1) {
-			return '"""\n$b\n"""';
-		}
-		return b;
+	@:deprecated("Use Utils.wrapMultiline(v1) instead")
+	public static inline function fixMultiline(b:String):String {
+		return Utils.wrapMultiline(b);
+	}
+	
+	public inline static function wrapMultiline(b:String):String {
+		if (b == null || b.indexOf("\n") == -1) return b == null ? "" : b;
+		return '"""\n$b\n"""';
 	}
 }
