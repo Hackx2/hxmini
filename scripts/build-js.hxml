@@ -1,3 +1,6 @@
+# DO NOT REMOVE THESE RESOURCES!!!! ITS REQUIRED FOR JS TESTING TO WORK
+--resource scripts/resources/testing.ini@js_testing_ini
+--resource scripts/resources/testing_long.ini@js_testing_long_ini
 scripts/build.hxml
 --js export/js/Main.js
 --cmd node export/js/Main.js
