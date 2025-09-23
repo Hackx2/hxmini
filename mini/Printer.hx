@@ -3,6 +3,10 @@ package mini;
 using StringTools;
 
 class Printer {
+	@:noUsing static public function stringify(doc:Ini):String {
+		return serialize(doc);
+	}
+	
 	@:noUsing static public function serialize(doc:Ini):String {
 		final __strBuf:StringBuf = new StringBuf();
 
