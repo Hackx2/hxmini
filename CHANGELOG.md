@@ -29,6 +29,6 @@ Initial Release.
 
 - Added the following classes: [`mini.Ini`](https://github.com/Hackx2/hxmini/blob/3d22408c8c275a4fd7df25085249a915dac2ca91/mini/Ini.hx), [`mini.EntryType`](https://github.com/Hackx2/hxmini/blob/3d22408c8c275a4fd7df25085249a915dac2ca91/mini/EntryType.hx), [`mini.Parser`](https://github.com/Hackx2/hxmini/blob/3d22408c8c275a4fd7df25085249a915dac2ca91/mini/Parser.hx), [`mini.Printer`](https://github.com/Hackx2/hxmini/blob/3d22408c8c275a4fd7df25085249a915dac2ca91/mini/Printer.hx) and [`mini.Utils`](https://github.com/Hackx2/hxmini/blob/3d22408c8c275a4fd7df25085249a915dac2ca91/mini/Utils.hx).
 
-[unreleased]: https://github.com/hackx2/hxmini/compare/v1.0.1...main
-[1.0.1]: https://github.com/hackx2/hxmini/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/hackx2/hxmini/releases/tag/v1.0.0
+[unreleased]: https://github.com/hackx2/hxmini/compare/1.0.1...main
+[1.0.1]: https://github.com/hackx2/hxmini/compare/1.0.0...1.0.1
+[1.0.0]: https://github.com/hackx2/hxmini/releases/tag/1.0.0
