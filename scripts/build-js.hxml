@@ -1,0 +1,3 @@
+scripts/build.hxml
+--js export/js/Main.js
+--cmd node export/js/Main.js

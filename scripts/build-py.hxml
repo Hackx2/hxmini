@@ -1,0 +1,3 @@
+scripts/build.hxml
+--python export/python/s.py
+--cmd python export/python/s.py

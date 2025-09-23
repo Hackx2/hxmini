@@ -1,0 +1,3 @@
+scripts/build.hxml
+--neko export/neko/Main.n
+--cmd neko export/neko/Main.n
