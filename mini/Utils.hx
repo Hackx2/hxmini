@@ -31,11 +31,14 @@ final class Utils {
 	 * @param s The input string to trim.
 	 * @return A new string with trailing whitespace removed.
 	 * 
-	 * @see https://api.haxe.org/StringTools.html#rpad
+	 * @see https://api.haxe.org/StringTools.html#rtrim
 	 */
 	@:deprecated
-	public inline static function trim_right(s:String):String { return StringTools.rtrim(s); }
-
+	public inline static function trim_right(s:String):String { // LET ME SLEEP PLEASE
+		var i:Int = (s.length - 1);
+		while (i >= 0 && isWhitespace(s.charAt(i))) { i--; }
+		return s.substring(0, i + 1);
+	}
 	/**
 	 * Wraps multiline strings.
 	 * @param b given string
