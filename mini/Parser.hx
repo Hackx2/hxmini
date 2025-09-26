@@ -45,7 +45,7 @@ class Parser {
 
 				// \ lines nodes
                 while (value.endsWith("\\")) {
-                    value = Utils.trim_right(value.substring(0, value.length - 1));
+                    value = StringTools.rtrim(value.substring(0, value.length - 1));
                     if (i < lines.length) {
                         value += "\n" + lines[i].trim();
                         i++;
