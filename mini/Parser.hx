@@ -8,7 +8,7 @@ class Parser {
     }
 
     // ugh these @:noCompletion metas look so weird.
-    @:noCompletion static final regexSection:EReg = ~/^\[(.+)\]/;
+    @:noCompletion static final regexSection:EReg = ~/^\[(.+)\]$/;
     @:noCompletion static final regexNode:EReg = ~/^([^#;][^=]+)=(.*)$/;
     @:noCompletion static final regexTripleQuote:EReg = ~/^"""\s*(.*)$/;
     @:noCompletion static final regexEndTripleQuote:EReg = ~/(.*?)"""\s*$/;
@@ -36,6 +36,9 @@ class Parser {
             if (regexSection.match(line)) {
                 doc.addChild(__current = new Ini(Section, regexSection.matched(1).trim()));
                 continue;
+            } else if (line.startsWith("[") || line.endsWith("]")) {
+                // malformed section exception
+                throw new Exception(EMalformedSection(line), i);
             }
 
 			// nodes
@@ -59,6 +62,7 @@ class Parser {
                     var _collected:String = regexTripleQuote.matched(1);
                     var __fEnd:Bool = false;
 
+                    final __startingL:Int = i; 
                     while (i < lines.length) {
                         final _nextLine:String = lines[i++];
                         if (regexEndTripleQuote.match(_nextLine)) {
@@ -71,7 +75,7 @@ class Parser {
 
                     if (!__fEnd) {
                         // should we throw or trace???
-                        throw 'Unterminated multiline value for key "$key"';
+                        throw new Exception(EUnterminatedMultilineValue(key), __startingL);
                     }
                     value = _collected;
                 }
@@ -81,8 +85,12 @@ class Parser {
                 }
 
                 (__current == null ? doc : __current).addChild(Ini.createKey(key, value));
-            }
-        }
+			} else {
+				// unknown line exception
+				throw new Exception(EUnknownLine, i);
+			}
+		}
+
 
         return doc;
     }

@@ -4,6 +4,7 @@ import tests.*;
 
 class Main {
 	static function main():Void {
+		//throw new mini.Exception("hi", 39);
 		haxe.Log.trace = (str:Dynamic, ?_:haxe.PosInfos) -> { // remove posInfos formatting
 			#if js
 			if (js.Syntax.typeof(untyped console) != "undefined" && (untyped console).log != null)

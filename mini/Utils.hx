@@ -39,6 +39,7 @@ final class Utils {
 		while (i >= 0 && isWhitespace(s.charAt(i))) { i--; }
 		return s.substring(0, i + 1);
 	}
+	
 	/**
 	 * Wraps multiline strings.
 	 * @param b given string
