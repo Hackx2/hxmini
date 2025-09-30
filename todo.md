@@ -1,8 +1,7 @@
 todo:
 - make sure it works seamlessly across all targets.
-- add pretty print. (IM LAZY AF)
-- todo: rewrite the test scripts
+- add pretty print. (Formatted toString data, IM LAZY AF)
 - improve/rewrite the .ini parser.
 - add necessary meta
-- fix javascript
-- 
+- add access
+- fix lua testing

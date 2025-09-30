@@ -1,5 +1,7 @@
 package mini;
 
+import mini.types.EntryType;
+
 using StringTools;
 using Lambda;
 

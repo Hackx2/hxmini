@@ -25,6 +25,6 @@ class Main {
                 Type.createEmptyInstance(i).test();
         })(Normal, Long, Creation);
         
-		trace(mini.EntryType.fromString('Document'));
+		trace(mini.types.EntryType.fromString('Document'));
 	}
 }
