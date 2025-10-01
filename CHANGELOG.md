@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Added [`mini.Access`](https://github.com/Hackx2/hxmini/blob/c5195a233f22e63b2602bcbf25a23c05461342eb/mini/Access.hx), dot-access to `ini` fields.
 - Added [`mini.Exception`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Exception.hx) & [`mini.types.ExceptionKind`](https://github.com/Hackx2/hxmini/blob/05a4698b7f296542219c4c62ca4d90f74db3293a/mini/types/ExceptionKind.hx).
 - Added the following [`Exception`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Exception.hx)'s: [`EUnterminatedMultilineValue`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Parser.hx#L78), [`EUnknownLine`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Parser.hx#L90), and [`EMalformedSection`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Parser.hx#L41) exceptions to the [`Parser`](https://github.com/Hackx2/hxmini/blob/commit/mini/Parser.hx#LXX).
 -  Added [`stringify`](https://github.com/Hackx2/hxmini/blob/1f4e06f6e5ec8d19fffa69761bc69676ee1b0e39/mini/Printer.hx#L6) method to [`Printer`](https://github.com/Hackx2/hxmini/blob/1f4e06f6e5ec8d19fffa69761bc69676ee1b0e39/mini/Printer.hx), this method redirects itself to [`Printer.serialize(v1)`](https://github.com/Hackx2/hxmini/blob/1f4e06f6e5ec8d19fffa69761bc69676ee1b0e39/mini/Printer.hx#L10).
