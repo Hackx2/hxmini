@@ -14,7 +14,6 @@ final class Normal extends Test {
 		trace(general.get("version"));
 		trace(general.get("theme"));
 
-		#if sys Sys.println #else trace #end (#if sys "\n" + #end"All tests passed!\n");
 		return !super.test();
 	}
 }

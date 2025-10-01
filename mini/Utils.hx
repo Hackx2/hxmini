@@ -1,3 +1,26 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2025 Hackx2
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+ * Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+ * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
+ * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
 package mini;
 
 /**
@@ -21,6 +44,30 @@ final class Utils {
 			|| _code == 13 /* carriage return */
 			|| _code == 10 /* line feed ??? */;
 	}
+
+	/**
+	 * Maps a iterator, i'll try find a better method but ayee
+	 * @param it 
+	 * @return Iterable<T>
+	 */
+	public static function mapIterator<T, R>(it:Iterator<T>, fn:T->R):Iterator<R> {
+		return {
+			hasNext: it.hasNext,
+			next: () -> fn(it.next())
+		};
+	}
+
+	/**
+	 * Converts a iterator into a iterable.
+	 * @param it 
+	 * @return Iterable<T>
+	 */
+	public static function iterableFromIterator<T>(it:Iterator<T>):Iterable<T> {
+		return {
+			iterator: () -> it
+		};
+	}
+
 
 	/**
 	 * Trims trailing whitespace from the given string.

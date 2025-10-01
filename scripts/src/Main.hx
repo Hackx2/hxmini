@@ -23,8 +23,10 @@ class Main {
         (function(...rest) { // lol
             for(i in rest.toArray())
                 Type.createEmptyInstance(i).test();
-        })(Normal, Long, Creation);
+        })(Normal, Long, Creation, Access);
         
 		trace(mini.types.EntryType.fromString('Document'));
+
+		#if sys Sys.println #else trace #end (#if sys "\n" + #end"All tests passed!\n");
 	}
 }
