@@ -46,30 +46,6 @@ final class Utils {
 	}
 
 	/**
-	 * Maps a iterator, i'll try find a better method but ayee
-	 * @param it 
-	 * @return Iterable<T>
-	 */
-	public static function mapIterator<T, R>(it:Iterator<T>, fn:T->R):Iterator<R> {
-		return {
-			hasNext: it.hasNext,
-			next: () -> fn(it.next())
-		};
-	}
-
-	/**
-	 * Converts a iterator into a iterable.
-	 * @param it 
-	 * @return Iterable<T>
-	 */
-	public static function iterableFromIterator<T>(it:Iterator<T>):Iterable<T> {
-		return {
-			iterator: () -> it
-		};
-	}
-
-
-	/**
 	 * Trims trailing whitespace from the given string.
 	 *
 	 * This function is deprecated in favor of `StringTools.rtrim`, which provides the same behavior.

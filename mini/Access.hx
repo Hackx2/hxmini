@@ -27,7 +27,7 @@ import mini.Ini;
 import mini.types.EntryType;
 
 /**
- * Provides dot-access to `Ini` sections & keys, this class is inspired by [`haxe.xml.Access`](https://api.haxe.org/haxe/xml/Access.html).
+ * This API provides dot-access to commonly used `mini.Ini` methods, this class is inspired by [`haxe.xml.Access`](https://api.haxe.org/haxe/xml/Access.html).
  * 
  * This isn't required or really needed to access data stored in the Ini class.
  * I just want dot-access to be available to those who need/want it. ~orbl
@@ -35,6 +35,9 @@ import mini.types.EntryType;
  * @see https://api.haxe.org/haxe/xml/Access.html
  */
 abstract Access(Ini) {
+	/**
+	 * The **Ini** class this **Access** `abstract` is bound to.
+	 */
 	public var ini(get, never):Ini;
 	@:noCompletion inline function get_ini():Ini {
 		return this;
@@ -89,27 +92,27 @@ abstract Access(Ini) {
 	}
 
 	/**
-	 * An `Iterable` of all sections.
+	 * Return an `Iterable` of all sections.
 	 */
 	public var sections(get, never):Iterable<Access>;
 	@:noCompletion inline function get_sections():Iterable<Access> {
-		return Utils.iterableFromIterator(Utils.mapIterator(this.sections(), i -> new Access(i)));
+		return iterableFromIterator(mapIterator(this.sections(), i -> new Access(i)));
 	}
 
 	/**
-	 * An `Iterable` of all keys.
+	 * Return an `Iterable` of all keys.
 	 */
 	public var keys(get, never):Iterable<Access>;
 	@:noCompletion inline function get_keys():Iterable<Access> {
-		return Utils.iterableFromIterator(Utils.mapIterator(this.keys(), i -> new Access(i)));
+		return iterableFromIterator(mapIterator(this.keys(), i -> new Access(i)));
 	}
 
 	/**
-	 * An `Iterable` of all comments.
+	 * Return an `Iterable` of all comments.
 	 */
 	public var comments(get, never):Iterable<Access>;
 	@:noCompletion inline function get_comments():Iterable<Access> {
-		return Utils.iterableFromIterator(Utils.mapIterator(this.comments(), i -> new Access(i)));
+		return iterableFromIterator(mapIterator(this.comments(), i -> new Access(i)));
 	}
 
 	/**
@@ -129,7 +132,7 @@ abstract Access(Ini) {
 	}
 
 	/**
-	 * Get the type of this node.
+	 * Get the type of this `Ini` object.
 	 */
 	public var type(get,never):EntryType;
 	@:noCompletion inline function get_type():EntryType {
@@ -140,6 +143,21 @@ abstract Access(Ini) {
 		if (i == null)
 			throw "Cannot wrap null Ini node.";
 		this = i;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////
+
+	@:noPrivateAccess @:noCompletion inline static function mapIterator<T, R>(it:Iterator<T>, fn:T->R):Iterator<R> {
+		return {
+			hasNext: it.hasNext,
+			next: () -> fn(it.next())
+		};
+	}
+
+	@:noPrivateAccess @:noCompletion inline static function iterableFromIterator<T>(it:Iterator<T>):Iterable<T> {
+		return {
+			iterator: () -> it
+		};
 	}
 }
 

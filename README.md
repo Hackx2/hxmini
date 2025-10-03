@@ -3,7 +3,7 @@
 <div align="center">
 <img src="https://raw.githubusercontent.com/Hackx2/hxmini/refs/heads/main/.resources/logo-noir-ini.png" alt="Matter" width="60%" />
 <p>
-<strong>Matter.ini 🌌</strong> is a lightweight and easy-to-use library for parsing <code>.ini</code> files. <br>It provides a straightforward way to read, modify, and create your own <code>.ini</code> files.
+<strong>Matter.ini 🌌</strong> is a lightweight and simple library for parsing <code>.ini</code> data. <br>It offers an easy way to read, modify, and create your own <code>.ini</code> data.
 
 </p>
 </div>
@@ -21,7 +21,7 @@
 
 <hr>
 
-<h2>Installation</h2>
+<h2>Installation 🔧</h2>
 <p>You can install the library directly using <code>haxelib</code>.</p>
 <pre><code>haxelib install mini</code></pre>
 <p>Or you could install using <code>git</code>.</p>
@@ -41,20 +41,17 @@
   cutie="milo"
   ```
 
-  
 <p>Now, you can parse this file and access its data:</p>
 
 ```haxe
-import mini.Parser as INIParser;
+import mini.Parser;
 
 
 // Get `testing.ini`'s file content.
 final content : String = sys.io.File.getContent('testing.ini');
 
 // Parse the content.
-final ini:Ini = INIParser.parse(content);
-
-// ------ NORMAL ELEMENT TESTING
+final ini:Ini = Parser.parse(content);
 
 // Get the element.
 final main:Ini = ini.elementsNamed("main.test").next();
@@ -94,7 +91,7 @@ ini.toString(); // Returns the serialized .ini document
 <hr>
 
 ## Contribution (yippie)
-Contributions are welcome!!! 💖 If you have suggestions or find a bug, please open an [issue](https://github.com/hackx2/hxmini/issues).
+Contributions are always welcome and appreciated!!! 💖If you have a bug or have any suggestions, please open an [issue](https://github.com/hackx2/hxmini/issues).
 
 <hr>
 
