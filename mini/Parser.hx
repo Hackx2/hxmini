@@ -30,12 +30,11 @@ class Parser {
         return ini.toString();
     }
 
-    // ugh these @:noCompletion metas look so weird.
-    @:noCompletion static final regexSection:EReg = ~/^\[(.+)\]$/;
-    @:noCompletion static final regexNode:EReg = ~/^([^#;][^=]+)=(.*)$/;
-    @:noCompletion static final regexTripleQuote:EReg = ~/^"""\s*(.*)$/;
-    @:noCompletion static final regexEndTripleQuote:EReg = ~/(.*?)"""\s*$/;
-    @:noCompletion static final regexComment:EReg = ~/^([;#])(.*)$/;
+    static final regexSection:EReg = ~/^\[(.+)\]$/;
+    static final regexNode:EReg = ~/^([^#;][^=]+)=(.*)$/;
+    static final regexTripleQuote:EReg = ~/^"""\s*(.*)$/;
+    static final regexEndTripleQuote:EReg = ~/(.*?)"""\s*$/;
+    static final regexComment:EReg = ~/^([;#])(.*)$/;
 
     public static function parse(data:String):Ini {
         var __current:Null<Ini> = null;
