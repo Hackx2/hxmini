@@ -1,7 +1,11 @@
 todo:
-- make sure it works seamlessly across all targets.
-- add pretty print. (Formatted toString data, IM LAZY AF)
+- add pretty print. (Formatted toString data, IM LAZY AF) it already does this sooo!!!!!!!!!!!
 - improve/rewrite the .ini parser.
-- add necessary meta
-- add access
+- remove :noCompletion from Parser.hx
 - fix lua testing
+- remove all obscenities from the code...
+- rewrite entry types (e.g)
+    ```hx
+        Comment('hi')
+        KeyValue('wsp', 'shush');
+    ```

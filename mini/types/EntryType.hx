@@ -45,6 +45,16 @@ enum abstract EntryType(Int) {
 	final KeyValue:EntryType = 0x03; // 3
 
 	/**
+	 * This enum-like type is used for dangerously injecting data.
+	 * 
+	 * !! Unless you know what you are doing. DO NOT USE THIS !!
+	 * !! (NOTICE: ANYTHING YOU INJECT HAS A CHANCE TO BREAK THE PARSER). !!
+	 * 
+	 * @since 1.0.2
+	 */
+	final DangerousInner:EntryType = 0x04;
+
+	/**
 	 * Convert type to string.
 	 * @return String
 	 */
@@ -54,6 +64,7 @@ enum abstract EntryType(Int) {
 			case Section: "Section";
 			case Comment: "Comment";
 			case KeyValue: "KeyValue";
+			case DangerousInner: "DangerousInner";
 		};
 	}
 
@@ -68,6 +79,7 @@ enum abstract EntryType(Int) {
 			case "section": Section;
 			case "comment": Comment;
 			case "keyvalue": KeyValue;
+			case 'dangerousinner': DangerousInner;
 			default: throw 'Unknown Type: $str';
 		};
 	}

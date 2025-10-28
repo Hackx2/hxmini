@@ -135,6 +135,17 @@ class Ini {
 	}
 
 	/**
+	 * This method allows you to dangerous inject data.
+	 * NOTICE: SINCE YOU'RE INJECTING THE TYPE `DangerousInner` YOU WONT BE ABLE TO USE .get() WITHOUT RE PARSING EVERYTHING. 
+	 * 
+	 * @param data The given data.
+	 * @since 1.0.2
+	 */
+	public function dangerouslyInject(data:Dynamic){
+		addChild(new Ini(DangerousInner, null, data));
+	}
+
+	/**
 	 * Adds/Pushes a child into the tree.
 	 * @param x child
 	 */

@@ -23,7 +23,7 @@ class Main {
         (function(...rest) { // lol
             for(i in rest.toArray())
                 Type.createEmptyInstance(i).test();
-        })(Normal, Long, Creation, Access);
+        })(Normal, Long, Creation, Access, DangerouslyInject);
         
 		trace(mini.types.EntryType.fromString('Document'));
 

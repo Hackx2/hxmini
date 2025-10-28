@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Added [`dangerouslyInject`]()
 - Added [`mini.Access`](https://github.com/Hackx2/hxmini/blob/c5195a233f22e63b2602bcbf25a23c05461342eb/mini/Access.hx), dot-access to `ini` fields.
 - Added [`mini.Exception`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Exception.hx) & [`mini.types.ExceptionKind`](https://github.com/Hackx2/hxmini/blob/05a4698b7f296542219c4c62ca4d90f74db3293a/mini/types/ExceptionKind.hx).
 - Added the following [`Exception`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Exception.hx)'s: [`EUnterminatedMultilineValue`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Parser.hx#L78), [`EUnknownLine`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Parser.hx#L90), and [`EMalformedSection`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Parser.hx#L41) exceptions to the [`Parser`](https://github.com/Hackx2/hxmini/blob/commit/mini/Parser.hx#LXX).
@@ -17,6 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Changed `static` method [`Utils.fixMultiline`](https://github.com/Hackx2/hxmini/blob/1f4e06f6e5ec8d19fffa69761bc69676ee1b0e39/mini/Utils.hx#L21) to [`Utils.wrapMultiline`](https://github.com/Hackx2/hxmini/blob/3d4986f79fe008df86dc63ce95343a3947da51b8/mini/Utils.hx#L26).
 - Kept method [`Utils.fixMultiline`](https://github.com/Hackx2/hxmini/blob/3d4986f79fe008df86dc63ce95343a3947da51b8/mini/Utils.hx#L22) for backwards compatibility.
 - Used [`StringTools.rtrim`](https://api.haxe.org/StringTools.html#rtrim) in [`mini.Parser.parse(v1)`](https://github.com/Hackx2/hxmini/blob/8f33ff8c85054055d07aee33c84f47fe2976f424/mini/Parser.hx#L48) instead of the `deprecated` method [`Utils.trim_right`](https://github.com/Hackx2/hxmini/blob/eaa04f6f49f45a75a0597e899fa591cf15a58b7e/mini/Utils.hx#L37)
+
+### Removed
+- `MINI_PUSH_ARTIFACTS` has now been removed...
 
 ### Deprecated
 - [`Utils.fixMultiline`](https://github.com/Hackx2/hxmini/blob/3d4986f79fe008df86dc63ce95343a3947da51b8/mini/Utils.hx#L22).
