@@ -106,7 +106,7 @@ class Ini {
 		return new Ini(KeyValue, k, v);
 	}
 
-	@:dox(hide) var __disposed:Bool = false;
+	@:noCompletion var __disposed:Bool = false;
 
 	/**
 	 * Disposes this `Ini` node and all of its children.
@@ -120,10 +120,10 @@ class Ini {
 				if (child != null) {
 					child.dispose();
 				}
-				children.remove(child);
 			}
 		}
-		children.resize(0);
+		if (children.length < 0)
+			children.resize(0);
 
 		parent = null;
 		nodeName = null;
@@ -141,7 +141,7 @@ class Ini {
 	 * @param data The given data.
 	 * @since 1.0.2
 	 */
-	public function dangerouslyInject(data:Dynamic){
+	public function dangerouslyInject(data:Dynamic) {
 		addChild(new Ini(DangerousInner, null, data));
 	}
 
@@ -150,7 +150,8 @@ class Ini {
 	 * @param x child
 	 */
 	public function addChild<T:Ini>(x:T):T {
-		if(__disposed) return null;
+		if (__disposed)
+			return null;
 		if (x.parent != null)
 			x.parent.removeChild(x);
 		children.push(x);

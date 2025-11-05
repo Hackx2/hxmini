@@ -23,97 +23,76 @@
 
 package mini;
 
+import mini.Lexer;
+import haxe.extern.EitherType;
+
 using StringTools;
 
 class Parser {
-    public static function print(ini:Ini):String {
-        return ini.toString();
-    }
+	@:deprecated public static function print(ini:Ini):String {
+		return ini.toString();
+	}
 
-    static final regexSection:EReg = ~/^\[(.+)\]$/;
-    static final regexNode:EReg = ~/^([^#;][^=]+)=(.*)$/;
-    static final regexTripleQuote:EReg = ~/^"""\s*(.*)$/;
-    static final regexEndTripleQuote:EReg = ~/(.*?)"""\s*$/;
-    static final regexComment:EReg = ~/^([;#])(.*)$/;
+	/**
+	 * Parses a string into a `Ini` class.
+	 * @param string input string
+	 * @return Returned a fully structured `Ini` class.
+	 */
+	public function parseString(string:String):Ini {
+		return parse(Lexer.tokenize(string));
+	}
 
-    public static function parse(data:String):Ini {
-        var __current:Null<Ini> = null;
+	/**
+	 * Parses a list of tokens or a string into a `Ini` class.
+	 * @param tokens Either `String` or `Array<LToken>`
+	 * @return Returned a fully structured `Ini` class.
+	 */
+	public static function parse(tokens:EitherType<String, Array<LToken>>):Ini {
+		// !!! Support For previous versions of hxmini. !!!
+		final lexTokens:Array<LToken> = tokens is String ? Lexer.tokenize(tokens) : cast tokens;
 
-        final doc:Ini = Ini.createDocument();
-        final lines:Array<String> = data.split("\n");
+		final doc:Ini = Ini.createDocument();
+		var currentSection:Ini = doc;
 
-        var i:Int = 0;
-        while (i < lines.length) {
-            var line = lines[i].trim(); i++;
-            if (line == "" || line.length <= 0) continue;
+		var i:Int = 0;
+		while (i < lexTokens.length) {
+			switch (lexTokens[i]) {
+				case Section(name):
+					final section:Ini = new Ini(Section, name);
+					doc.addChild(section);
+					currentSection = section;
+					i++;
 
-			// comments
-            if (regexComment.match(line)) {
-                var content = regexComment.matched(2).trim();
-                (__current == null ? doc : __current).addChild(new Ini(Comment, null, content));
-                continue;
-            }
+				case Comment(comment):
+					currentSection.addChild(new Ini(Comment, null, comment));
+					i++;
 
-			// sections
-            if (regexSection.match(line)) {
-                doc.addChild(__current = new Ini(Section, regexSection.matched(1).trim()));
-                continue;
-            } else if (line.startsWith("[") || line.endsWith("]")) {
-                // malformed section exception
-                throw new Exception(EMalformedSection(line), i);
-            }
+				case Key(key):
+					i++;
+					if (i >= lexTokens.length || lexTokens[i] != Equals)
+						throw new Exception(ECustom('Expected "="(equals) after key "$key"'));
+					i++;
+					if (i >= lexTokens.length)
+						throw new Exception(ECustom('Expected value after key "$key"'));
+					switch (lexTokens[i]) {
+						case Value(value):
+							currentSection.addChild(Ini.createKey(key, value));
+							i++;
+						default:
+							throw new Exception(ECustom('Expected value after key "$key"'));
+					}
 
-			// nodes
-            if (regexNode.match(line)) {
-                final key = regexNode.matched(1).trim();
-                var value = regexNode.matched(2).trim();
+				case Newline:
+					i++;
 
-				// \ lines nodes
-                while (value.endsWith("\\")) {
-                    value = StringTools.rtrim(value.substring(0, value.length - 1));
-                    if (i < lines.length) {
-                        value += "\n" + lines[i].trim();
-                        i++;
-                    } else {
-                        break;
-                    }
-                }
+				case Eof:
+					return doc;
 
-				// """ """ nodes
-                if (regexTripleQuote.match(value)) {
-                    var _collected:String = regexTripleQuote.matched(1);
-                    var __fEnd:Bool = false;
-
-                    final __startingL:Int = i; 
-                    while (i < lines.length) {
-                        final _nextLine:String = lines[i++];
-                        if (regexEndTripleQuote.match(_nextLine)) {
-                            _collected += "\n" + regexEndTripleQuote.matched(1);
-                            __fEnd = true; break;
-                        } else {
-                            _collected += "\n" + _nextLine;
-                        }
-                    }
-
-                    if (!__fEnd) {
-                        // should we throw or trace???
-                        throw new Exception(EUnterminatedMultilineValue(key), __startingL);
-                    }
-                    value = _collected;
-                }
-
-                if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
-                    value = value.substring(1, value.length - 1);
-                }
-
-                (__current == null ? doc : __current).addChild(Ini.createKey(key, value));
-			} else {
-				// unknown line exception
-				throw new Exception(EUnknownLine, i);
+				default:
+					throw new Exception(ECustom('Unexpected token at position $i: ' + lexTokens[i]));
 			}
 		}
 
-
-        return doc;
-    }
+		return doc;
+	}
 }

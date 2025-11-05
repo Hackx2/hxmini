@@ -31,15 +31,15 @@ class Exception extends haxe.Exception {
 	public var kind:ExceptionKind;
 
 	// MINI EXCEPTION seems so cringe
-	public function new(kind:ExceptionKind, line:Int) {
-		super('[MINI Exception]:$line: ' + to(kind));
+	public function new(kind:ExceptionKind, ?line:Int) {
+		super('[hxmini] : [EXCEPTION]:${line != null ? '$line:' : ''} ' + to(kind));
 		this.kind = kind;
-		this.line = line;
+		this.line = line ?? 0;
 	}
 
 	static function to(kind:ExceptionKind):String {
 		return switch (kind) {
-			case EMalformedSection(key): 'Malformed section header "$key';
+			case EMalformedSection(key): 'Malformed section header "$key"';
 			case EUnknownLine: 'Unrecognized line format';
 			case EUnterminatedMultilineValue(key): 'Unterminated multiline value for key "$key"';
 			case ECustom(e): '$e';

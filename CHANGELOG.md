@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Added [`Lexer`]()
 - Added [`dangerouslyInject`](https://github.com/Hackx2/hxmini/blob/853dd9901aacbd4a5a8787f4729c87b9b5c65b9e/mini/Ini.hx#L144).
 - Added [`mini.Access`](https://github.com/Hackx2/hxmini/blob/c5195a233f22e63b2602bcbf25a23c05461342eb/mini/Access.hx), dot-access to `ini` fields.
 - Added [`mini.Exception`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Exception.hx) & [`mini.types.ExceptionKind`](https://github.com/Hackx2/hxmini/blob/05a4698b7f296542219c4c62ca4d90f74db3293a/mini/types/ExceptionKind.hx).
@@ -14,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Rewrote [`mini.Parser`]() from scratch.
 - Moved [`mini.EntryType`](https://github.com/Hackx2/hxmini/blob/05a4698b7f296542219c4c62ca4d90f74db3293a/mini/EntryType.hx) to [`mini.types.EntryType`](https://github.com/Hackx2/hxmini/blob/05a4698b7f296542219c4c62ca4d90f74db3293a/mini/types/EntryType.hx).
 - Changed `static` method [`Utils.fixMultiline`](https://github.com/Hackx2/hxmini/blob/1f4e06f6e5ec8d19fffa69761bc69676ee1b0e39/mini/Utils.hx#L21) to [`Utils.wrapMultiline`](https://github.com/Hackx2/hxmini/blob/3d4986f79fe008df86dc63ce95343a3947da51b8/mini/Utils.hx#L26).
 - Kept method [`Utils.fixMultiline`](https://github.com/Hackx2/hxmini/blob/3d4986f79fe008df86dc63ce95343a3947da51b8/mini/Utils.hx#L22) for backwards compatibility.
