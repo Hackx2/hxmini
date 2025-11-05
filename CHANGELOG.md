@@ -6,7 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- Added [`Lexer`]()
+- Added [`Lexer`](https://github.com/Hackx2/hxmini/blob/905f768443ff294af722b5b85b3560812edf01ae/mini/Lexer.hx).
+- Added [`parseString`](https://github.com/Hackx2/hxmini/blob/905f768443ff294af722b5b85b3560812edf01ae/mini/Parser.hx#L41) to [`mini.Parser`](https://github.com/Hackx2/hxmini/blob/905f768443ff294af722b5b85b3560812edf01ae/mini/Parser.hx).
 - Added [`dangerouslyInject`](https://github.com/Hackx2/hxmini/blob/853dd9901aacbd4a5a8787f4729c87b9b5c65b9e/mini/Ini.hx#L144).
 - Added [`mini.Access`](https://github.com/Hackx2/hxmini/blob/c5195a233f22e63b2602bcbf25a23c05461342eb/mini/Access.hx), dot-access to `ini` fields.
 - Added [`mini.Exception`](https://github.com/Hackx2/hxmini/blob/7b18b08538a5f72445bb2dd7b0f74b5df70fc752/mini/Exception.hx) & [`mini.types.ExceptionKind`](https://github.com/Hackx2/hxmini/blob/05a4698b7f296542219c4c62ca4d90f74db3293a/mini/types/ExceptionKind.hx).
@@ -15,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- Rewrote [`mini.Parser`]() from scratch.
+- Rewrote [`mini.Parser.parse`](https://github.com/Hackx2/hxmini/blob/905f768443ff294af722b5b85b3560812edf01ae/mini/Parser.hx#L50) from scratch.
 - Moved [`mini.EntryType`](https://github.com/Hackx2/hxmini/blob/05a4698b7f296542219c4c62ca4d90f74db3293a/mini/EntryType.hx) to [`mini.types.EntryType`](https://github.com/Hackx2/hxmini/blob/05a4698b7f296542219c4c62ca4d90f74db3293a/mini/types/EntryType.hx).
 - Changed `static` method [`Utils.fixMultiline`](https://github.com/Hackx2/hxmini/blob/1f4e06f6e5ec8d19fffa69761bc69676ee1b0e39/mini/Utils.hx#L21) to [`Utils.wrapMultiline`](https://github.com/Hackx2/hxmini/blob/3d4986f79fe008df86dc63ce95343a3947da51b8/mini/Utils.hx#L26).
 - Kept method [`Utils.fixMultiline`](https://github.com/Hackx2/hxmini/blob/3d4986f79fe008df86dc63ce95343a3947da51b8/mini/Utils.hx#L22) for backwards compatibility.
@@ -25,9 +26,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `MINI_PUSH_ARTIFACTS` has now been removed...
 
 ### Deprecated
+- [`Parser.print`](https://github.com/Hackx2/hxmini/blob/main/mini/Utils.hx#L32).
 - [`Utils.fixMultiline`](https://github.com/Hackx2/hxmini/blob/3d4986f79fe008df86dc63ce95343a3947da51b8/mini/Utils.hx#L22).
-- [`Utils.trim_right`]()
-- [`Utils.isWhitespace`]()
+- [`Utils.trim_right`](https://github.com/Hackx2/hxmini/blob/905f768443ff294af722b5b85b3560812edf01ae/mini/Utils.hx#L60).
+- [`Utils.isWhitespace`](https://github.com/Hackx2/hxmini/blob/905f768443ff294af722b5b85b3560812edf01ae/mini/Utils.hx#L40).
 
 ## [1.0.1] - 2025-09-20
 
