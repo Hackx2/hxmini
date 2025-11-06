@@ -15,7 +15,7 @@ enum LToken {
 // make into an instance, or?
 class Lexer {
 	static final regexSection:EReg = ~/^\[(.+)\]$/;
-	static final regexNode:EReg = ~/^([^#;][^=]+)=(.*)$/;
+	static final regexNode:EReg = ~/^([^#;][^=]*)=(.*)$/;
 	static final regexTripleQuote:EReg = ~/^"""\s*(.*)$/;
 	static final regexEndTripleQuote:EReg = ~/(.*?)"""\s*$/;
 	static final regexComment:EReg = ~/^([;#])(.*)$/;
