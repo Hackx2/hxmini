@@ -25,7 +25,7 @@
 <p>You can install the library directly using <code>haxelib</code>.</p>
 <pre><code>haxelib install mini</code></pre>
 <p>Or you could install using <code>git</code>.</p>
-<pre><code>haxelib git mini https://github.com/hackx2/hxmini</code></pre>
+<pre><code>haxelib git mini https://github.com/hackx2/hxmini.git</code></pre>
 <hr>
 
 <h2>Usage</h2>

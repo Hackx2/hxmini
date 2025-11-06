@@ -33,11 +33,9 @@ class Parser {
 
 		var i:Int = 0;
 		while (i < lexTokens.length) {
-			switch (lexTokens[i]) {
+			switch lexTokens[i] {
 				case Section(name):
-					final section:Ini = new Ini(Section, name);
-					doc.addChild(section);
-					currentSection = section;
+					doc.addChild(currentSection = new Ini(Section, name));
 					i++;
 
 				case Comment(comment):
@@ -51,7 +49,7 @@ class Parser {
 					i++;
 					if (i >= lexTokens.length)
 						throw new Exception(ECustom('Expected value after key "$key"'));
-					switch (lexTokens[i]) {
+					switch lexTokens[i] {
 						case Value(value):
 							currentSection.addChild(Ini.createKey(key, value));
 							i++;
