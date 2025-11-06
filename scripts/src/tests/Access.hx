@@ -3,7 +3,7 @@ package tests;
 import mini.Access as MAccess;
 
 final class Access extends Test {
-	override public function test():Null<Bool> {
+	@:noCompletion override function test():Null<Bool> {
 		final ini:Ini = Parser.parse(#if js Resource.getString('js_testing_ini') #else File.getContent('resources/testing.ini') #end);
 		final access:MAccess = new MAccess(ini);
 

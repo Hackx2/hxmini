@@ -1,28 +1,26 @@
 package tests;
 
 final class Creation extends Test {
-	override public function test():Null<Bool> {
+	@:noCompletion override function test():Null<Bool> {
 		final ini:Ini = Ini.createDocument();
 
 		final general:Ini = Ini.createSection("General");
-		general.set("name", "MyApp");
-		general.set("version", "1.0");
-		general.comment("This is gay");
+		general.set("name", "CustomIni");
+		general.set("version", "1.0.0");
+		general.comment("This is a comment...");
 		ini.addChild(general);
 
 		final user:Ini = Ini.createSection("User");
-		user.set("username", "Milo");
+		user.set("username", "Pretzel");
 		user.set("role", "Admin");
 		ini.addChild(user);
 
 		final net:Ini = Ini.createSection("Network");
-		net.set("ip", "192.168.0.5");
-		net.set("port", "8080");
+		net.set("ip", "127.0.0.1");
+		net.set("port", "5000");
 		ini.addChild(net);
 
-		final miloNetworkInherit:Ini = Ini.createSection("Milo:Network", ini);
-		miloNetworkInherit.set("hi", "heyo!!!");
-		ini.addChild(miloNetworkInherit);
+		ini.comment('Goodbye');
 
 		trace(ini.toString());
 

@@ -4,7 +4,6 @@ import tests.*;
 
 class Main {
 	static function main():Void {
-		//throw new mini.Exception("hi", 39);
 		haxe.Log.trace = (str:Dynamic, ?_:haxe.PosInfos) -> { // remove posInfos formatting
 			#if js
 			if (js.Syntax.typeof(untyped console) != "undefined" && (untyped console).log != null)
@@ -18,15 +17,18 @@ class Main {
 			#end
 		}
 
+		final time:Float = Sys.time();
 		trace('<---------------------- Testing ---------------------->\n');
 
-        (function(...rest) { // lol
-            for(i in rest.toArray())
-                Type.createEmptyInstance(i).test();
-        })(Normal, Long, Creation, Access, DangerouslyInject, LexerTest);
-        
-		trace(mini.types.EntryType.fromString('Document'));
+		(function(...rest) { // lol
+			for (i in rest.toArray()) {
+				trace([i]);
+				trace('-----------------------------------');
+				Type.createEmptyInstance(i).test();
+				trace('-----------------------------------\n');
+			}
+		})(Normal, Long, Creation, Access, DangerouslyInject, Lexer, Miscellaneous);
 
-		#if sys Sys.println #else trace #end (#if sys "\n" + #end"All tests passed!\n");
+		trace('Finished in ${Math.round((Sys.time() - time) * 1000.0) / 1000.0} seconds!\nAll tests passed!\n');
 	}
 }
