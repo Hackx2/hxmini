@@ -21,35 +21,35 @@ class Parser {
 
 	/**
 	 * Parses a list of tokens or a string into a `Ini` class.
-	 * @param tokens Either `String` or `Array<LToken>`
+	 * @param tokens Either `String` or `Array<Token>`
 	 * @return Returned a fully structured `Ini` class.
 	 */
-	public static function parse(tokens:EitherType<String, Array<LToken>>):Ini {
+	public static function parse(tokens:EitherType<String, Array<Token>>):Ini {
 		// !!! Support For previous versions of hxmini. !!!
-		final lexTokens:Array<LToken> = tokens is String ? Lexer.tokenize(tokens) : cast tokens;
+		final tokens:Array<Token> = tokens is String ? Lexer.tokenize(tokens) : cast tokens;
 
 		final doc:Ini = Ini.createDocument();
 		var currentSection:Ini = doc;
 
 		var i:Int = 0;
-		while (i < lexTokens.length) {
-			switch lexTokens[i] {
+		while (i < tokens.length) {
+			switch tokens[i] {
 				case Section(name):
 					doc.addChild(currentSection = new Ini(Section, name));
 					i++;
 
 				case Comment(comment):
-					currentSection.addChild(new Ini(Comment, null, comment));
+					doc.addChild(new Ini(Comment, null, comment));
 					i++;
 
 				case Key(key):
 					i++;
-					if (i >= lexTokens.length || lexTokens[i] != Equals)
+					if (i >= tokens.length || tokens[i] != Equals)
 						throw new Exception(ECustom('Expected "="(equals) after key "$key"'));
 					i++;
-					if (i >= lexTokens.length)
+					if (i >= tokens.length)
 						throw new Exception(ECustom('Expected value after key "$key"'));
-					switch lexTokens[i] {
+					switch tokens[i] {
 						case Value(value):
 							currentSection.addChild(Ini.createKey(key, value));
 							i++;
@@ -64,7 +64,7 @@ class Parser {
 					return doc;
 
 				default:
-					throw new Exception(ECustom('Unexpected token at position $i: ' + lexTokens[i]));
+					throw new Exception(ECustom('Unexpected token at position $i: ' + tokens[i]));
 			}
 		}
 
