@@ -1,3 +1,6 @@
+--resource scripts/resources/testing.ini@testing_ini
+--resource scripts/resources/testing_long.ini@testing_long_ini
+
 --cwd ./scripts
 --dce no
 -lib mini

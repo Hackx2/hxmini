@@ -38,7 +38,7 @@
   ```ini
   [main.test]
   name="hackx2"
-  cutie="milo"
+  meows="meow"
   ```
 
 <p>Now, you can parse this file and access its data:</p>
@@ -58,7 +58,7 @@ final main:Ini = ini.elementsNamed("main.test").next();
 
 // Get and print data.
 Sys.println(main.get('name')); // Returns "hackx2"
-Sys.println(main.get('cutie')); // Returns "milo"
+Sys.println(main.get('meows')); // Returns "meow"
 
 // -----------------------------
 ```

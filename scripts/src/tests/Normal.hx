@@ -1,13 +1,16 @@
 package tests;
 
+import haxe.Resource;
+
 final class Normal extends Test {
 	@:noCompletion override function test():Null<Bool> {
-		final ini:Ini = Parser.parse(#if js Resource.getString('js_testing_ini') #else File.getContent('resources/testing.ini') #end);
+		final ini:Ini = Parser.parse(Resource.getString('testing_ini'));
 
-		final main:Ini = ini.elementsNamed("main.test").next();
+		final main:Ini = ini.elementsNamed("Main").next();
 		trace('[Global]');
 		trace(main.get('name'));
-		trace(main.get('cutie'));
+		trace(main.get('meows'));
+		trace('"${main.get('multiline')}"');
 
 		final general:Ini = ini.elementsNamed("General").next();
 		trace('[General]');

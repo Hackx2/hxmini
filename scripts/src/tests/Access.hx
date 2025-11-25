@@ -1,10 +1,11 @@
 package tests;
 
+import haxe.Resource;
 import mini.Access as MAccess;
 
 final class Access extends Test {
 	@:noCompletion override function test():Null<Bool> {
-		final ini:Ini = Parser.parse(#if js Resource.getString('js_testing_ini') #else File.getContent('resources/testing.ini') #end);
+		final ini:Ini = Parser.parse(Resource.getString('testing_ini'));
 		final access:MAccess = new MAccess(ini);
 
 		if (access.has.section.General) {

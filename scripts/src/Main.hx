@@ -1,7 +1,12 @@
 package;
 
-import tests.*;
-
+/**
+ * This class serves as the core for testing each submodule inside of the ./tests/ directory.
+ * 
+ * Instead of dynamically loading each module from the ./tests/ directory, we've decided to manually load each module using rest.
+ * Yes, dynamically loading each one would me more effective, however, it seems pointless on a project this small.
+ * Also, dynamically loading modules would require the use of a macro, and i'm lazy. :3c
+ */
 class Main {
 	static function main():Void {
 		haxe.Log.trace = (str:Dynamic, ?_:haxe.PosInfos) -> { // remove posInfos formatting
@@ -17,18 +22,21 @@ class Main {
 			#end
 		}
 
-		final time:Float = Sys.time();
+		final time:Float = haxe.Timer.stamp();
 		trace('<---------------------- Testing ---------------------->\n');
 
-		(function(...rest) { // lol
+		(function(...rest) {
 			for (i in rest.toArray()) {
 				trace([i]);
 				trace('-----------------------------------');
 				Type.createEmptyInstance(i).test();
 				trace('-----------------------------------\n');
 			}
-		})(Normal, Long, Creation, Access, DangerouslyInject, Lexer, Miscellaneous);
+		})(tests.Normal, tests.Long, tests.Creation, tests.Access, tests.DangerouslyInject, tests.Lexer, tests.Miscellaneous);
 
-		trace('Finished in ${Math.round((Sys.time() - time) * 1000.0) / 1000.0} seconds!\nAll tests passed!\n');
+		// ROUND((CURRENT_TIME - PREVIOUS_TIME) * 1000.0) / 1000.0
+		final timeTaken:Float = Math.round((haxe.Timer.stamp() - time) * 1000.0) / 1000.0;
+		
+		trace('Finished in $timeTaken seconds!\nAll tests passed!\n');
 	}
 }
